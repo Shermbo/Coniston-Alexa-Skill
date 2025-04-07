@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"launch": {
+		"configurations": [
+			{
+				"type": "aws-sam",
+				"request": "direct-invoke",
+				"name": "coniston:index.handler (nodejs14.x)",
+				"invokeTarget": {
+					"target": "code",
+					"projectRoot": "${workspaceFolder}/coniston",
+					"lambdaHandler": "index.handler"
+				},
+				"lambda": {
+					"runtime": "nodejs14.x",
+					"payload": {},
+					"environmentVariables": {}
+				}
+			}
+		]
+	}
+}

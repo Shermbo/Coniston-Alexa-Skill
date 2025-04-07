@@ -1,0 +1,22 @@
+[33mcommit 164264259d7c42449a04b4a8769eb7a7499b0283[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Sherman Horton <shermanhorton@hotmail.com>
+Date:   Mon Apr 7 00:08:21 2025 -0400
+
+    readme update
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 83116ed..ee88fc5 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1 +1,10 @@[m
+ # Coniston-Alexa-Skill[m
+[32m+[m
+[32m+[m[32m## Overview[m
+[32m+[m[32mThis repository holds the code for the YMCA Camp Coniston Alexa Skill. This is the Amazon Alexa skill that provides voice interaction with an Amazon Alexa device in the context of information about YMCA Camp Coniston.[m
+[32m+[m
+[32m+[m[32m## Installing the Skill on your Alexa Device[m
+[32m+[m
+[32m+[m[32m## Invocations[m
+[32m+[m[32mTo start ANY interaction, you must first[m[41m [m
+[32m+[m[32mWhat can you ask the skill[m
+\ No newline at end of file[m

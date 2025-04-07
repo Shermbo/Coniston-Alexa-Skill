@@ -10,7 +10,12 @@
  * Modified: 07-Sep-2020 - still COVID but resetting for Summer of 2020
  * Modified: 27-Jun-2021 - updating based on Summer 2021 check-in changes
  * Modified: 11-Apr-2022 - update for Summer 2022 (late!)
- * 
+ * Modified: 08-Sep-2022 - update for Summer 2023 (early!)
+ * Modified: 20-Jan-2024 - update for Summer 2024 (on time?)
+ * Modified: 20-Jan-2024 - updated for Node.js version 20.x (??)
+ * Modified: 22-Oct-2024 - initial updates for Summer 2025
+ * Modified: 7-Apr-2025 - adding to GitHub and automating deployments to Lambda
+ *  
  * based on nodejs skill development kit
  * This skill supports multiple lauguages. (en-US, en-GB, de-DE). ???
  * Find this skill's page on https://developer.amazon.com/alexa/console/ask
@@ -39,7 +44,7 @@ const PLAYBACK_PAUSED = "Playback is paused";
 //Arrays
 //=========================================================================================================================================
 const coniston_facts = [
-/* */
+/* 
     'Camp Coniston covers over fifteen hundred acres of land surrounding Lake Coniston.',
     'The Pavilion was built on the site of what used to be a volleyball court.',
     'There used to be a girls lean to overnight spot, located on the trail between Bigelow and Trigger.',
@@ -47,12 +52,13 @@ const coniston_facts = [
     'Camp Coniston welcomes campers and staff from 16 countries and 28 states!',
     'The deepest part of Lake Coniston is in a surprising location! The Bog!',
     'Loon families nest on Lake Coniston every summer. We love welcoming the baby loons!',
-    'Our camp Director, John Tilley, has been leading Camp Coniston for 20 years!',
+    'Our camp Director, John Tilley, has been leading Camp Coniston for 23 years!',
     'Camp Coniston has a high retention rate, 90% of campers return each year!',
-    'Camp Coniston also runs after school programs in 5 local communities.',
     'The camp\'s archery range used to be between the tennis courts and bog, but is now located next to the A field.',
     'The current dining hall was built on the site of a cabin named Tamarak, which used to house the youngest girl campers.'
-];
+*/
+    'This is a test - hello Sherman'
+    ];
 
 const audio_clips = [
 /* */
@@ -65,8 +71,21 @@ const audio_clips = [
     'https://s3.amazonaws.com/media.coniston.org/alexa/campbackground.mp3',
     'https://s3.amazonaws.com/media.coniston.org/alexa/singingtaps.mp3'
 ];
+
 //=========================================================================================================================================
-//Editing anything below this line might break your skill.
+/*
+
+2025
+
+SESSION 1: June 22 – July 5
+SESSION 2: July 6 – July 19
+SESSION 3: July 20 – August 2
+SESSION 4: August 3 – August 16
+
+SESSION 5: August 18 – August 23
+
+Winning Spirit: August 29 
+*/
 //=========================================================================================================================================
 
 const handlers = {
@@ -95,19 +114,19 @@ const handlers = {
             case 'session 1' :
             case 'camp' :
                 // calculate days until session begins
-                session_start = new Date("June 26, 2022 12:00:00");
-                start_date = "june twenty sixth";
+                session_start = new Date("June 22, 2025 12:00:00");
+                start_date = "june twenty second";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = session_name_Slot + " starts in " + gapdays + " days on " + start_date;
-                    card_output = "Session 1\n" + gapdays + " days\n6/26/2022";
+                    card_output = "Session 1\n" + gapdays + " days\n6/22/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in times are specific to individual campers. Contact the camp office if you need a check-in time."
                 if (gapdays == 1) {
-                    speak_str = "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!";
+                    speak_str = "Session one starts tomorrow! Don't be too early or too late!";
                     card_output = "Session 1\nStarts\nTomorrow!";
                 }
                 // if gapdays = -1 speak "Session one starts today! Check-in starts at noon."
@@ -123,15 +142,15 @@ const handlers = {
                 break;
             case 'session 2' :
                 // calculate days until session begins
-                session_start = new Date("July 10, 2022 12:00:00");
-                start_date = "july tenth";
+                session_start = new Date("July 6, 2025 12:00:00");
+                start_date = "july sixth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = session_name_Slot + " starts in " + gapdays + " days on " + start_date;
-                    card_output = "Session 2\n" + gapdays + " days\n7/10/2022";
+                    card_output = "Session 2\n" + gapdays + " days\n7/6/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in times are specific to individual campers. Contact the camp office if you need a check-in time."
                 if (gapdays == 1) {
@@ -151,15 +170,15 @@ const handlers = {
                 break;
             case 'session 3' :
                 // calculate days until session begins
-                session_start = new Date("July 24, 2022 12:00:00");
-                start_date = "july twenty fourth";
+                session_start = new Date("July 20, 2025 12:00:00");
+                start_date = "july twentieth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = session_name_Slot + " starts in " + gapdays + " days on " + start_date;
-                    card_output = "Session 3\n" + gapdays + " days\n7/24/2022";
+                    card_output = "Session 3\n" + gapdays + " days\n7/20/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -179,15 +198,15 @@ const handlers = {
                 break;
             case 'session 4' :
                 // calculate days until session begins
-                session_start = new Date("August 7, 2022 12:00:00");
-                start_date = "august seventh";
+                session_start = new Date("August 3, 2025 12:00:00");
+                start_date = "august third";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = session_name_Slot + " starts in " + gapdays + " days on " + start_date;
-                    card_output = "Session 4\n" + gapdays + " days\n8/7/2022";
+                    card_output = "Session 4\n" + gapdays + " days\n8/3/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -209,15 +228,15 @@ const handlers = {
             case '1 week camp' :
             case '1 week session' :
                 // calculate days until session begins
-                session_start = new Date("August 22, 2022 11:00:00");
-                start_date = "august twenty second";
+                session_start = new Date("August 18, 2025 11:00:00");
+                start_date = "august eighteenth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "Session five, our one week camping session, starts in " + gapdays + " days on " + start_date;
-                    card_output = "Session 5\n" + gapdays + " days\n8/22/2022";
+                    card_output = "Session 5\n" + gapdays + " days\n8/18/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -239,15 +258,15 @@ const handlers = {
             case 'camp winning spirit' :
             case 'winning spirit' :
                 // calculate days until session begins
-                session_start = new Date("September 2, 2022 09:00:00");
-                start_date = "september second";
+                session_start = new Date("August 29, 2025 09:00:00");
+                start_date = "august twenty ninth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "Camp Winning Spirit starts in " + gapdays + " days on " + start_date;
-                    card_output = "Winning Spirit\n" + gapdays + " days\n9/2/2022";
+                    card_output = "Winning Spirit\n" + gapdays + " days\n8/29/2025";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -265,36 +284,44 @@ const handlers = {
                     card_output = "Winning Spirit\nHas Already\nStarted!";
                 }
                 break;
-            //-------------------------------------------ADVENTURE CAMP TRIPS-----------------------------------------------------------------------------//
+            
+            //=========================================================================================================================================
+            //-------------------------------------------ADVENTURE CAMP TRIPS-----------------------------------------------------------------------------
             /*
-            6-Day Trips
-            Quebec Quest: July 3 – 8, 2022
-            Acadian Odyssey : July 10 – 15, 2022
-            Maine Voyager: July 17 – 22, 2022
-            Coastal Navigator: July 24 – 29, 2022
-            Green Mt. Explorer: July 31 – Aug 5, 2022
-            Northern NE Explorer: Aug 7 – 12, 2022
 
-            10-Day Trip
-            Quebec Extended Adventure: July 24 – Aug 2, 2022
+            2024 6 DAY ADVENTURE CAMP FOR AGES 12-15
+
+            Green Mtn. Explorer: June 30 – July 5
+            Acadian Odyssey: July 7 – July 12
+            Coastal Navigator: July 14 – July 19
+            Quebec Quest: July 21 – July 26
+            Maine Voyager: July 28 – Aug 2
+            Northern N.E. Explorer: Aug 4 – Aug 9
+
+            2024 10 DAY EXTENDED ADVENTURE CAMP FOR AGES 12-15
+
+            Quebec Extended Adventure: July 21 – July 30
             */
+            //=========================================================================================================================================
+
             
             case 'adventure camp' :
                 // calculate days until session begins
                 speak_str = "There are seven adventure camp trips this summer. Please try again and specify the name of the adventure camp trip.";
                 card_output = "Which Trip?";                
                 break;
+            
             case 'green mountain explorer' :
                 // calculate days until session begins
-                session_start = new Date("July 31, 2022 12:00:00");
-                start_date = "July thirty first";
+                session_start = new Date("June 30, 2024 12:00:00");
+                start_date = "june thirtieth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/31/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n6/30/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -312,17 +339,18 @@ const handlers = {
                     card_output = "Trip has\nstarted!";
                 }
                 break;
+
             case 'coastal navigator' :
                 // calculate days until session begins
-                session_start = new Date("July 24, 2022 12:00:00");
-                start_date = "July twenty fourth";
+                session_start = new Date("July 14, 2024 12:00:00");
+                start_date = "July fourteenth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/24/2021";
+                    card_output = "Trip starts in\n" + gapdays + " days\n7/14/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -340,17 +368,18 @@ const handlers = {
                     card_output = "Trip has\nstarted!";
                 }
                 break;
+
             case 'northern new England explorer' :
                 // calculate days until session begins
-                session_start = new Date("August 7, 2022 12:00:00");
-                start_date = "August seventh";
+                session_start = new Date("August 4, 2024 12:00:00");
+                start_date = "August fourth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n8/7/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n8/4/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -368,17 +397,18 @@ const handlers = {
                     card_output = "Trip has\nstarted!";
                 }
                 break;
+
             case 'Acadian odyssey' :
                 // calculate days until session begins
-                session_start = new Date("July 10, 2022 12:00:00");
-                start_date = "july tenth";
+                session_start = new Date("July 7, 2024 12:00:00");
+                start_date = "July seventh";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/10/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n7/7/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -397,19 +427,21 @@ const handlers = {
                 }
                 break;
 
-                //NEW 10 DAY
+            // NEW 10 DAY Adventure Trip
 
-            case 'Quebec Extended Adventure' :
+            case 'Quebec extended adventure' :
+            case 'extended adventure':
+
                 // calculate days until session begins
-                session_start = new Date("July 24, 2022 12:00:00");
-                start_date = "july twenty fourth";
+                session_start = new Date("July 21, 2024 12:00:00");
+                start_date = "july twenty first";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/24/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n7/21/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -426,19 +458,19 @@ const handlers = {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", has already started.";
                     card_output = "Trip has\nstarted!";
                 }
-                break;//--------------------------------------------------------------^-^-^-------------------------------------------------------------------------------//
-            
+                break;
+                
             case 'Quebec quest' :
                 // calculate days until session begins
-                session_start = new Date("July 3, 2022 12:00:00");
-                start_date = "july third";
+                session_start = new Date("July 21, 2024 12:00:00");
+                start_date = "july twenty first";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/3/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n7/21/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -457,18 +489,18 @@ const handlers = {
                 }
                 break;
 
-                case 'main voyager' :
-                case 'Maine voyager' :
+            case 'main voyager' :
+            case 'Maine voyager' :
                 // calculate days until session begins
-                session_start = new Date("July 17, 2022 12:00:00");
-                start_date = "July seventeenth";
+                session_start = new Date("July 28, 2024 12:00:00");
+                start_date = "July twenty eighth";
                 start_time = session_start.getTime();
                 gapdays = Math.round((start_time - now_time) / (1000*60*60*24), -1);
 
                 // default - 2 or more days until session
                 if (gapdays > 1) {
                     speak_str = "The adventure camp trip, " + session_name_Slot + ", starts in " + gapdays + " days on " + start_date;
-                    card_output = "Trip starts in\n" + gapdays + " days\n7/17/2022";
+                    card_output = "Trip starts in\n" + gapdays + " days\n7/28/2024";
                 }
                 // if gapdays = 0 speak "Session one starts tomorrow! Check-in starts at noon. Don't be too early or too late!"
                 if (gapdays == 1) {
@@ -486,11 +518,12 @@ const handlers = {
                     card_output = "Trip has\nstarted!";
                 }
                 break;
+
             default :
                 //speak_str = covid_speak;
                 //card_output = covid_card;
-                speak_str = "Camp Coniston starts on June twenty sixth, two thousand and twenty two. If you want to know when a specific camping session begins, please ask when that session starts.";
-                card_output = "2022 Camping Sessions\nbegin\nJune 26th, 2022!";
+                speak_str = "Camp Coniston starts on June twenty third, two thousand and twenty four. If you want to know when a specific camping session or adventure camp trip begins, please ask when that starts by name.";
+                card_output = "2024 Camping Sessions\nbegin\nJune 23rd, 2023!";
                 break;            
         }
 

@@ -1,0 +1,20 @@
+git/*
+6-Day Trips
+x Quebec Quest: July 3 – 8, 2022
+x Acadian Odyssey : July 10 – 15, 2022
+x Maine Voyager: July 17 – 22, 2022
+x Coastal Navigator: July 24 – 29, 2022
+x Green Mt. Explorer: July 31 – Aug 5, 2022
+x Northern NE Explorer: Aug 7 – 12, 2022
+
+10-Day Trip
+Quebec Extended Adventure: July 24 – Aug 2, 2022
+*/
+
+
+Invokations
+
+ask camp coniston when maine voyager begins
+ask camp coniston when main voyager begins
+ask camp coniston when quebec quest begins
+ask camp coniston when Acadian odyssey begins
